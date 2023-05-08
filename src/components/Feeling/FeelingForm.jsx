@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function FeelingForm (props) {
   const [feelingInput, setFeelingInput] = useState('');
+  const history = useHistory();
 
   const createFeeling = (event) => {
     event.preventDefault();
@@ -11,11 +13,15 @@ function FeelingForm (props) {
     axios({
       method: "POST",
       url: "/api/feedback",
-      data: {feeling}
+      data: {
+        feeling: feelingInput
+      }
     }).then ((response) => {
         console.log("POST", response.data);
+        setFeelingInput("");
     }).catch ((error) => {
         console.log("POST wasn't successful:", error);
+        console.log(error.response);
     })
   }
   return (
@@ -27,7 +33,7 @@ function FeelingForm (props) {
        value={feelingInput}
        onChange={(event) => {setFeelingInput(event.target.value)}}
       />
-      <button>Next</button>
+      <button onClick={() => { history.push("/understanding")}}>Next</button>
     </form>
     )
 };
