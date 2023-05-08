@@ -10,18 +10,18 @@ function UnderstandingForm (props) {
     event.preventDefault();
     console.log('Understanding:', understandingInput);
 
-    // axios({
-    //   method: "POST",
-    //   url: "/api/feedback",
-    //   data: {
-    //     understanding: understandingInput
-    //   }
-    // }).then ((response) => {
-    //     console.log("POST", response.data);
-    //     setUnderstandingInput("");
-    // }).catch ((error) => {
-    //     console.log("POST wasn't successful:", error);
-    // })
+    axios({
+      method: "POST",
+      url: "/api/feedback",
+      data: {
+        understanding: understandingInput
+      }
+    }).then ((response) => {
+        console.log("POST", response.data);
+        setUnderstandingInput("");
+    }).catch ((error) => {
+        console.log("POST wasn't successful:", error);
+    })
   }
   return (
     <form onSubmit={createUnderstanding}>

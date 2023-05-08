@@ -17,11 +17,14 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
 
   const queryText = `
-   INSERT INTO "feedback" ("feeling")
-   VALUES ($1);
+   INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+   VALUES ($1, $2, $3, $4);
   `;
   const queryValues = 
-    [req.body.feeling]
+    [req.body.feeling,
+    req.body.understanding,
+    req.body.support,
+    re.body.comments]
     ;
 
   pool.query(queryText, queryValues)

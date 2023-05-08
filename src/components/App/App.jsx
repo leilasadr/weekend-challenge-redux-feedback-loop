@@ -8,6 +8,9 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 import FeelingForm from '../Feeling/FeelingForm';
 import UnderstandingForm from '../Understanding/UnderstandingForm';
+import SupportForm from '../Support/SupportForm';
+import CommentsForm from '../Comments/CommentsForm';
+import ReviewPage from '../Review/ReviewPage';
 
 function App() {
 
@@ -43,12 +46,24 @@ function App() {
       </header>
       <Router>
 
-        <Route>
+        <Route exact path ="/">
           <FeelingForm />
         </Route>
 
         <Route exact path="/understanding">
           <UnderstandingForm />
+        </Route>
+
+        <Route exact path="/support">
+          <SupportForm />
+        </Route>
+
+        <Route exact path="/comments">
+          <CommentsForm />
+        </Route>
+
+        <Route exact path="/review">
+          <ReviewPage />
         </Route>
 
       </Router>

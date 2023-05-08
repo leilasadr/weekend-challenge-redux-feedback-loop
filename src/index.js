@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 // Add Reducers
-const feeling = (state=[], action) => {
+const feedback = (state=[], action) => {
   if(action.type === "SET_FEEDBACK") {
     const feedbackData = action.payload;
     return feedbackData;
@@ -20,7 +20,7 @@ const feeling = (state=[], action) => {
 // Redux store:
 const feedbackStore = createStore(
     combineReducers({
-      feeling
+        feedback
     }),
     applyMiddleware(
         logger
