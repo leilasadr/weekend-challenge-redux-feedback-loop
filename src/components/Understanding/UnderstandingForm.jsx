@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function UnderstandingForm (props) {
   const [understandingInput, setUnderstandingInput] = useState('');
@@ -19,6 +21,7 @@ function UnderstandingForm (props) {
     }).then ((response) => {
         console.log("POST", response.data);
         setUnderstandingInput("");
+        props.fetchFeedback();
     }).catch ((error) => {
         console.log("POST wasn't successful:", error);
     })

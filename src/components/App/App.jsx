@@ -47,7 +47,7 @@ function App() {
       <Router>
 
         <Route exact path ="/">
-          <FeelingForm />
+          <FeelingForm fetchFeedback={fetchFeedback} />
         </Route>
 
         <Route exact path="/understanding">

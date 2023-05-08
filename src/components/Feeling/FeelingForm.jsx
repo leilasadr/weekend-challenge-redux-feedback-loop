@@ -1,10 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function FeelingForm (props) {
   const [feelingInput, setFeelingInput] = useState('');
   const history = useHistory();
+
+  
 
   const createFeeling = (event) => {
     event.preventDefault();
@@ -19,6 +23,8 @@ function FeelingForm (props) {
     }).then ((response) => {
         console.log("POST", response.data);
         setFeelingInput("");
+        props.fetchFeedback();
+        history.push("/understanding");
     }).catch ((error) => {
         console.log("POST wasn't successful:", error);
         console.log(error.response);
@@ -33,7 +39,7 @@ function FeelingForm (props) {
        value={feelingInput}
        onChange={(event) => {setFeelingInput(event.target.value)}}
       />
-      <button onClick={() => { history.push("/understanding")}}>Next</button>
+      <button onClick={createFeeling}>Next</button>
     </form>
     )
 };

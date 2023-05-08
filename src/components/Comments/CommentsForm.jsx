@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function CommentsForm (props) {
   const [commentsInput, setCommentsInput] = useState('');
@@ -19,6 +21,7 @@ function CommentsForm (props) {
     }).then ((response) => {
         console.log("POST", response.data);
         setCommentsInput("");
+        props.fetchFeedback();
     }).catch ((error) => {
         console.log("POST wasn't successful:", error);
     })
