@@ -2,4 +2,4 @@
 
 ## Description
 
-_Duration: 16 hours_
+_Duration: 20 hours_
